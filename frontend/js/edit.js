@@ -8,6 +8,18 @@ const cid = document.getElementById('id')
 const manufacturer = document.getElementById('manufacturer')
 const model = document.getElementById('model')
 const release_year = document.getElementById('release_year')
+const part = document.getElementById('part')
+
+fetch('http://localhost:8000/part')
+.then(rsp => rsp.json())
+.then(data => {
+    data.foreach(part => {
+        const option = document.createElement('option')
+        option.value=part.id
+        option.text = part.name
+        part.appendChild(option)
+    })
+})
 
 fetch('http://localhost:8000/car/' + id)
     .then(rsp => {

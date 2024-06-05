@@ -29,7 +29,9 @@ function createCarTableRow(car) {
     copy.querySelector('.id').innerText = car.id
     copy.querySelector('.manufacturer').innerText = car.car_manufacturer
     copy.querySelector('.model').innerText = car.car_model
+    copy.querySelector('.part').innerText = car.part.name
     copy.querySelector('.release_year').innerText = car.car_release_year
+
     copy.querySelector('.edit').href = `./edit.html?id=${car.id}`
     copy.querySelector('.remove').addEventListener('click', ()=>{
         if(confirm(`Da li zelita da obrisete automobil ${car.car_manufacturer} ${car.car_model} ${car.car_release_year}`)){
