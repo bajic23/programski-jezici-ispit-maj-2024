@@ -5,34 +5,27 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.cglib.core.Local;
 
+import javax.swing.*;
 import java.time.LocalDateTime;
 
-@Entity(name = "car")
 @NoArgsConstructor
 @Getter
 @Setter
-public class Car {
+@Entity(name = "part")
 
+
+public class Part {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "car_id")
+    @Column(name = "part_id")
     private Integer id;
-
-    @Column(nullable = false)
-    private String car_manufacturer;
-    @Column(nullable = false)
-    private String car_model;
-    @Column(nullable = false)
-    private String car_release_year;
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "part_id", nullable = false)
-    private Part part;
-
+    @Column
+    private String name;
+    @Column
+    private String fuel_type;
     private LocalDateTime updatedAt;
 
     @JsonIgnore
     private LocalDateTime deletedAt;
-
 }

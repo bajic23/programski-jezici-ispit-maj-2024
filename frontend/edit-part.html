@@ -32,7 +32,7 @@
                             <a class="nav-link" href="./part.html">Delovi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/add.html">Novi automobil</a>
+                            <a class="nav-link" href="./add.html">Dodaj automobil</a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -44,26 +44,24 @@
                 </div>
             </div>
         </nav>
-        <h1>Dodaj automobil</h1>
+        <h1>Izmeni informacije o delovima</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="./ispit.html">Pocetna</a></li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    Dodaj automobil
-                </li>
+                <li class="breadcrumb-item active" aria-current="page" id="breadcrumb"></li>
             </ol>
         </nav>
         <div>
-                    <label for="manufacturer" class="form-label">Proizvodjac</label>
-                    <input type="text" class="form-control" id="manufacturer">
+            <div class="mb-3">
+                <label for="id" class="form-label">Deo id</label>
+                <input type="number" class="form-control" id="id" disabled>
+                <div class="mb-3">
+                    <label for="manufacturer" class="form-label">Naziv</label>
+                    <input type="text" class="form-control" id="name">
                 </div>
                 <div class="mb-3">
-                    <label for="model" class="form-label">Model</label>
-                    <input type="text" class="form-control" id="model">
-                </div>
-                <div class="mb-3">
-                    <label for="release_year" class="form-label">Godina proizvodnje</label>
-                    <input type="number" class="form-control" id="release_year">
+                    <label for="model" class="form-label">Tip goriva</label>
+                    <input type="text" class="form-control" id="fuel_type">
                 </div>
                 <button type="submit" class="btn btn-success" id="save">
                     <i class="fa-solid fa-floppy-disk"></i> Sacuvaj</button>
@@ -73,7 +71,7 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
         <script src="./js/search.js"></script>
-        <script src="./js/add.js"></script>
+        <script src="./js/edit-part.js"></script>
 </body>
 
 </html>
