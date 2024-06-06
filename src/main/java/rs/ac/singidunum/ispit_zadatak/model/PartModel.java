@@ -10,4 +10,5 @@ import lombok.Setter;
 @Setter
 public class PartModel {
     private String name;
+    private String fuel_type;
 }

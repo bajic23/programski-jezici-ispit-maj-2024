@@ -24,11 +24,13 @@ public class PartService {
     public Part savePart(PartModel model){
         Part part = new Part();
         part.setName(model.getName());
+        part.setFuel_type(model.getFuel_type());
         return repository.save(part);
     }
     public Part updatePart(Integer id, PartModel model){
         Part part = repository.findByIdAndDeletedAtIsNull(id).orElseThrow();
         part.setName(model.getName());
+        part.setFuel_type(model.getFuel_type());
         part.setUpdatedAt(LocalDateTime.now());
         return repository.save(part);
     }

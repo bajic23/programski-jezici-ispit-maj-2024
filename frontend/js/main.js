@@ -31,7 +31,7 @@ function createCarTableRow(car) {
     copy.querySelector('.model').innerText = car.car_model
     copy.querySelector('.part').innerText = car.part.name
     copy.querySelector('.release_year').innerText = car.car_release_year
-
+    copy.querySelector('.updated').innerText = formatDate(car.updatedAt)
     copy.querySelector('.edit').href = `./edit.html?id=${car.id}`
     copy.querySelector('.remove').addEventListener('click', ()=>{
         if(confirm(`Da li zelita da obrisete automobil ${car.car_manufacturer} ${car.car_model} ${car.car_release_year}`)){
@@ -51,7 +51,7 @@ function createCarTableRow(car) {
     })
     table.appendChild(copy)
 }
-/*function formatDate(iso) {
+function formatDate(iso) {
     if (iso == null) return 'N/A'
     return new Date(iso).toLocaleString('sr-RS')
-}*/
+}

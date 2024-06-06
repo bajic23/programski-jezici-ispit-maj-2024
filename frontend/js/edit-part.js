@@ -39,6 +39,22 @@ fetch('http://localhost:8000/part/' + id)
                     else
                     alert(`Izmena dela nije uspela(HTTP ${rsp.status})`)
                 })
+                copy.querySelector('.remove').addEventListener('click', ()=>{
+                    if(confirm(`Da li zelita da obrisete deo ${part.name} ${part.fuel_type} `)){
+                        fetch(`http://localhost:8000/part/${part.id}`, {
+                            method: 'DELETE',
+            
+                        })
+                            .then(rsp => {
+                                if (rsp.status == 204) {
+                                    window.location.href = './part.html'
+                                    return
+                                }
+                                else
+                                alert(`Brisanje dela nije uspelo(HTTP ${rsp.status})`)
+                            })
+                    }
+                })
         })
 
     })

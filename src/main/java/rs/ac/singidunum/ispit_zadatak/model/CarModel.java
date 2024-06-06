@@ -12,4 +12,5 @@ public class CarModel {
     private String manufacturer;
     private String model;
     private String release_year;
+    private Integer partId;
 }

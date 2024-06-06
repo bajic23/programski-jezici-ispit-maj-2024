@@ -8,18 +8,7 @@ const cid = document.getElementById('id')
 const manufacturer = document.getElementById('manufacturer')
 const model = document.getElementById('model')
 const release_year = document.getElementById('release_year')
-const part = document.getElementById('part')
-
-fetch('http://localhost:8000/part')
-.then(rsp => rsp.json())
-.then(data => {
-    data.foreach(part => {
-        const option = document.createElement('option')
-        option.value=part.id
-        option.text = part.name
-        part.appendChild(option)
-    })
-})
+const parts = document.getElementById('part')
 
 fetch('http://localhost:8000/car/' + id)
     .then(rsp => {
@@ -34,6 +23,22 @@ fetch('http://localhost:8000/car/' + id)
         model.value = data.car_model
         release_year.value = data.car_release_year
         breadcrumb.innerText = `${data.car_manufacturer} ${data.car_model} ${data.car_release_year}`
+
+        fetch('http://localhost:8000/part')
+            .then(rsp => rsp.json())
+            .then(partData => {
+                partData.forEach(part => {
+                    const option = document.createElement('option')
+                    if (part.id == data.part.id) {
+                        option.selected = true
+                    }
+                    option.value = part.id
+                    option.text = part.name
+
+                    parts.appendChild(option)
+                })
+            })
+
         document.getElementById('save').addEventListener('click', () => {
             fetch(`http://localhost:8000/car/${data.id}`, {
                 method: 'PUT',
@@ -43,7 +48,8 @@ fetch('http://localhost:8000/car/' + id)
                 body: JSON.stringify({
                     manufacturer: manufacturer.value,
                     model: model.value,
-                    release_year: release_year.value
+                    release_year: release_year.value,
+                    partId: parts.value
                 }),
             })
                 .then(rsp => {
@@ -52,7 +58,7 @@ fetch('http://localhost:8000/car/' + id)
                         return
                     }
                     else
-                    alert(`Izmena automobila nije uspela(HTTP ${rsp.status})`)
+                        alert(`Izmena automobila nije uspela(HTTP ${rsp.status})`)
                 })
         })
 
